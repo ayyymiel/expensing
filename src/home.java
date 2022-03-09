@@ -14,17 +14,17 @@ import java.util.List;
 
 public class home {
 
-    public static void listHolder() {
-        // later for JSON config
-        JSONObject toJSON = new JSONObject();
-    }
-
     public static float spendGainCalc() {
         Scanner inputExpenseType = new Scanner(System.in);
+        Scanner inputValueSpent = new Scanner(System.in);
 
         System.out.print("Expense Selection (Number): ");
         int inputType;
         inputType = inputExpenseType.nextInt();
+
+        System.out.print("Input Money Gained (+) or Spent (-): ");
+        float inputMoneys;
+        inputMoneys = inputValueSpent.nextFloat();
 
 
     }
