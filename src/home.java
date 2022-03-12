@@ -15,31 +15,16 @@ import java.util.List;
 public class home {
 
     public static float spendGainCalc() {
+        Scanner inputAction = new Scanner(System.in);
         Scanner inputExpenseType = new Scanner(System.in);
         Scanner inputValueSpent = new Scanner(System.in);
 
-        System.out.print("Expense Selection (Number): ");
-        int inputType;
-        inputType = inputExpenseType.nextInt();
+        parser.readJSON();
 
-        System.out.print("Input Money Gained (+) or Spent (-): ");
-        float inputMoneys;
-        inputMoneys = inputValueSpent.nextFloat();
-
-
-    }
-
-    public static List<String> expenseList() {
-        // add new item to list
-        Scanner inputNew = new Scanner(System.in);
-        System.out.println("Please enter a new Expense Type: ");
-        String newExpense;
-        newExpense = inputNew.nextLine();
-
-        List<String> menuExpense = new ArrayList<>();
-        menuExpense.add(newExpense);
-
-        return menuExpense;
+        System.out.print("Expense Selection (Number) or Income (0): ");
+        int action;
+        action = inputAction.nextInt();
+        return 0;
     }
 
     public static void main(String[] args) {
@@ -47,21 +32,8 @@ public class home {
         Scanner inputSelection = new Scanner(System.in);
 
         System.out.println("========== Running Total =========");
-        System.out.println("Please make a selection: ");
+        System.out.println("Money?: ");
 
-        List<String> menuList = new ArrayList<>();
-        menuList.add("1. Select Expense");
-        menuList.add("2. Add New Expense Type");
-        System.out.println(menuList);
-
-        System.out.println("Make a selection (1 or 2): ");
-        float selection;
-        selection = inputSelection.nextInt();
-
-        if (selection == 1) {
-            System.out.println(spendGainCalc());
-        } else {
-            System.out.println(expenseList());
-        }
+        System.out.println(spendGainCalc());
     }
 }

@@ -1,17 +1,18 @@
-import org.json.JSONArray;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileReader;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.FileWriter;
+import java.util.List;
+import java.util.ArrayList;
 
 public class parser {
     public static void writeJSON(JSONObject writtenItems) throws Exception{
-        try (FileWriter file = new FileWriter("config.json")) {
+        try (FileWriter file = new FileWriter("resources/config.json")) {
             file.write((writtenItems.toJSONString()));
             file.flush();
         } catch (IOException e) {
@@ -19,16 +20,17 @@ public class parser {
         }
     }
 
-    public static double readJSON(String expType) throws Exception {
-        JSONParser parseJson = new JSONParser();
-        try (FileReader reader = new FileReader("config.json")) {
-            Object readerObj = parseJson.parse(reader);
-            JSONObject jsonObj = (JSONObject) readerObj;
+    public static void readJSON() {
+        JSONParser parser = new JSONParser();
+        try {
+            Object obj = parser.parse(new FileReader("resources/config.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray configArray = (JSONArray)  jsonObject.get("Config Array");
+            String[] configList = new String[configArray.size()];
+            System.out.println(configList[0]);
 
-            return (double) jsonObj.get(expType);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
+        } catch (ParseException | IOException e) {
+        e.printStackTrace();
         }
     }
 }
